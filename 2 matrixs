@@ -1,0 +1,39 @@
+#задаём первую матрицу
+print "Сколько строк будет в вашей 1 матрице?"
+numb_str1=gets.to_i #размер матрицы
+stroka_vvoda1=1
+matr1=[]
+for i in (0..numb_str-1).each do #пробегаемся по каждой строке матрицы, заполняем их
+  print "Введите числа для #{stroka_vvoda1} строки"
+  b=gets
+  znachstr=b.split(' ').map(&:to_i)
+  matr1.push(znachstr)
+  stroka_vvoda1+=1
+end #закончили задавать 1 матрицу
+
+#задаем 2 матрицу
+print "Cколько строк будет в вашей 2 матрице?"
+numb_str2=gets.to_i
+str_vvoda2=1
+matr2=[] #проделываем все аналогично 1 матрице
+for i in (0..kolstrok2-1).each do
+  print "Введите числа для #{stroka_vvoda2} строки"
+  b=gets
+  znachstr=b.split(' ').map(&:to_i)
+  matr2.push(znachstr)
+  stroka_vvoda2+=1
+end
+#закончиили задавать 2 матрицу
+
+#начинаем работу по перемножению матриц
+matr3_stolb=matr2[0].length
+matr3_str=numb_str1
+matr3 = Array.new(matr3_str) {Array.new(matr3_stolb) {0}} #создаем список, в каждом элементе которого мы создаем еще один
+for i in (0..matr3.length-1).each do
+  for j in (0..matr3[0].length-1).each do
+    for k in (0..matr1[0].length-1).each do
+      matr3[i][j] += matr1[i][k] * matr2[k][j]
+    end
+  end
+end
+print matr3
